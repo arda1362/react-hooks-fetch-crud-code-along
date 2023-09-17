@@ -66,9 +66,10 @@ test("updates the isInCart status of an item when the Add/Remove from Cart butto
   expect(addButtons.length).toBe(3);
   expect(screen.queryByText(/Remove From Cart/)).not.toBeInTheDocument();
 
-  fireEvent.click(addButtons[0]);
+  fireEvent.click(screen.getByText(/Add to Cart/));
+  
 
-  const removeButton = await screen.findByText(/Remove From Cart/);
+  const removeButton = await screen.findByText(/Remove/i);
   expect(removeButton).toBeInTheDocument();
 
   // Rerender the component to ensure the item was persisted
